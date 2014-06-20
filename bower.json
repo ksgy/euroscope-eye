@@ -1,5 +1,5 @@
 {
-  "name": "pentekesti-eye",
+  "name": "euroscope-eye",
   "version": "0.0.0",
   "dependencies": {
     "angular": "1.2.5",
@@ -8,8 +8,7 @@
     "angular-resource": "1.2.5",
     "angular-cookies": "1.2.5",
     "angular-sanitize": "1.2.5",
-    "angular-route": "1.2.5",
-    "angular-google-maps": "~1.1.4"
+    "angular-route": "1.2.5"
   },
   "devDependencies": {
     "angular-mocks": "1.2.5",

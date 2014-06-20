@@ -3,8 +3,7 @@ dist/
 node_modules/
 *.zip
 .DS_Store
-app/bower_components
-app/bower_components/**/*
+app/vendor/bower_components
 app/vendor/bower_components/**/*
 npm-debug.log
 .svn/
@@ -15,4 +14,3 @@ app/display.html
 screenshot_*.png
 cms_user.js
 cms_user*.js
-bower_components

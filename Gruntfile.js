@@ -39,9 +39,9 @@ module.exports = function (grunt) {
         files: ['app\src\**\tests/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
-      compass: {
-        files: ['app\src\**\assets\styles/{,*/}*.{scss,sass}'],
-        tasks: ['compass:server', 'autoprefixer']
+      styles: {
+        files: ['app\src\**\assets\styles/{,*/}*.css'],
+        tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
         files: ['Gruntfile.js']
@@ -68,7 +68,7 @@ module.exports = function (grunt) {
       },
       livereload: {
         options: {
-          open: true,
+          open: false,
           base: [
             '.tmp',
             '<%= yeoman.app %>'
@@ -151,33 +151,6 @@ module.exports = function (grunt) {
 
 
 
-    // Compiles Sass to CSS and generates necessary files if requested
-    compass: {
-      options: {
-        sassDir: 'app\src\**\assets\styles',
-        cssDir: '.tmp/styles',
-        generatedImagesDir: '.tmp/images/generated',
-        imagesDir: 'app\src\**\assets\images',
-        javascriptsDir: 'app\src',
-        fontsDir: 'app\src\**\assets\fonts',
-        importPath: 'app\vendor/bower_components',
-        httpImagesPath: '/images',
-        httpGeneratedImagesPath: '/images/generated',
-        httpFontsPath: '/styles/fonts',
-        relativeAssets: false,
-        assetCacheBuster: false
-      },
-      dist: {
-        options: {
-          generatedImagesDir: '<%= yeoman.dist %>/images/generated'
-        }
-      },
-      server: {
-        options: {
-          debugInfo: true
-        }
-      }
-    },
 
     // Renames files for browser caching purposes
     rev: {
@@ -305,13 +278,13 @@ module.exports = function (grunt) {
     // Run some tasks in parallel to speed up the build process
     concurrent: {
       server: [
-        'compass:server'
+        'copy:styles'
       ],
       test: [
-        'compass'
+        'copy:styles'
       ],
       dist: [
-        'compass:dist',
+        'copy:styles',
         'imagemin',
         'svgmin'
       ]

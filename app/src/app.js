@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('pentekestiEyeApp', [
+angular.module('euroscopeEyeApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -9,7 +9,7 @@ angular.module('pentekestiEyeApp', [
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'src\common\views/main.html',
+        templateUrl: 'src/common/views/main.html',
         controller: 'MainCtrl'
       })
       .otherwise({

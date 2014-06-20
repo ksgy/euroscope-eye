@@ -1,10 +1,12 @@
 'use strict';
 
-angular.module('pentekestiEyeApp')
-  .controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+angular.module('euroscopeEyeApp')
+.controller('MainCtrl', function ($scope, $log, MapMapdataservice) {
+
+	MapMapdataservice.get().then(function(response) {
+		$log.debug(response);
+	}, function(response) {
+		// TODO error handling
+	});
+
+});
