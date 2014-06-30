@@ -1,3 +1,5 @@
+// TODO web workers to process data
+
 'use strict';
 
 angular.module('euroscopeEyeApp')
@@ -24,8 +26,13 @@ angular.module('euroscopeEyeApp')
 			var resultObj = {};
 			var resultArr = [];
 			for (var i = index - 1; i >= 0; i--) {
-				if(resLines[i].indexOf('@S') > 0){
-					var pos = resLines[i].substring(resLines[i].indexOf('@S'), resLines[i].length).replace(/\s/g, '');
+				if(resLines[i].indexOf('@S') > 0 || resLines[i].indexOf('@N') > 0){
+					if(resLines[i].indexOf('@S') > 0){
+						var pos = resLines[i].substring(resLines[i].indexOf('@S'), resLines[i].length).replace(/\s/g, '');
+					}
+					if(resLines[i].indexOf('@N') > 0){
+						var pos = resLines[i].substring(resLines[i].indexOf('@N'), resLines[i].length).replace(/\s/g, '');
+					}
 					var posArr = pos.split(':');
 
 					resultObj[posArr[1]] = {
