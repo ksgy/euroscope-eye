@@ -1,9 +1,5 @@
 <h1>EuroScope Eye</h1>
 
-<google-map center="map.center" zoom="map.zoom">
-	<markers
-		models="markers"
-		coords="'self'"
-		icon="'icon'">
-	</markers>
+<google-map center="map.center" zoom="map.zoom" draggable="true">
+	<polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></polyline>
 </google-map>
