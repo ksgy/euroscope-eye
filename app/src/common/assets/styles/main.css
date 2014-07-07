@@ -2,6 +2,21 @@
 body {
   padding-top: 20px;
   padding-bottom: 20px;
+  font-family: arial, sans-serif;
 }
 
-.angular-google-map-container { height: 800px; }
+.angular-google-map-container { height: 600px; }
+
+h1 {
+	margin: 10px 50px;
+	text-transform: uppercase;
+}
+
+h2 {
+	margin: 20px 50px;
+	text-transform: uppercase;
+}
+
+ul {
+	margin: 20px 50px;
+}
