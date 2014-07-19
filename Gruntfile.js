@@ -29,18 +29,18 @@ module.exports = function (grunt) {
     // Watches files for changes and runs tasks based on the changed files
     watch: {
       js: {
-        files: ['app\src/{,*/}*.js'],
+        files: ['app/src/{,*/}*.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: true
         }
       },
       jsTest: {
-        files: ['app\src\**\tests/spec/{,*/}*.js'],
+        files: ['app/src/**/tests/spec/{,*/}*.js'],
         tasks: ['newer:jshint:test', 'karma']
       },
       styles: {
-        files: ['app\src\**\assets\styles/{,*/}*.css'],
+        files: ['app/src/**/assets/styles/{,*/}*.css'],
         tasks: ['newer:copy:styles', 'autoprefixer']
       },
       gruntfile: {
@@ -53,7 +53,7 @@ module.exports = function (grunt) {
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '.tmp/styles/{,*/}*.css',
-          'app\src\**\assets\images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
+          'app/src/**/assets/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
       }
     },
@@ -100,13 +100,13 @@ module.exports = function (grunt) {
       },
       all: [
         'Gruntfile.js',
-        'app\src/{,*/}*.js'
+        'app/src/{,*/}*.js'
       ],
       test: {
         options: {
           jshintrc: '.jshintrc'
         },
-        src: ['app\src\**\tests/spec/{,*/}*.js']
+        src: ['app/src/**/tests/spec/{,*/}*.js']
       }
     },
 
@@ -170,9 +170,9 @@ module.exports = function (grunt) {
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
     useminPrepare: {
-      html: '<%= yeoman.app %>/index.html',
+      html: 'app/index.html',
       options: {
-        dest: '<%= yeoman.dist %>'
+        dest: 'dist'
       }
     },
 
@@ -190,7 +190,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'app\src\**\assets\images',
+          cwd: 'app/src/**/assets/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -200,7 +200,7 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'app\src\**\assets\images',
+          cwd: 'app/src/**/assets/images',
           src: '{,*/}*.svg',
           dest: '<%= yeoman.dist %>/images'
         }]
@@ -216,8 +216,7 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: '<%= yeoman.dist %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['app/index.html', 'views/{,*/}*.html'],
           dest: '<%= yeoman.dist %>'
         }]
       }
@@ -249,16 +248,15 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: './',
           dest: '<%= yeoman.dist %>',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'app\src\**\views/{,*/}*.html',
-            'app\vendor/bower_components/**/*',
-            'app\src\**\assets\images/{,*/}*.{webp}',
-            'app\src\**\assets\fonts/*'
+            'app/src/**/views/{,*/}*.html',
+            'app/vendor/bower_components/**/*',
+            'app/src/**/assets/images/{,*/}*.{webp}',
+            'app/src/**/assets/fonts/*'
           ]
         }, {
           expand: true,
@@ -269,7 +267,7 @@ module.exports = function (grunt) {
       },
       styles: {
         expand: true,
-        cwd: 'app\src\**\assets\styles',
+        cwd: 'app/src/**/assets/styles',
         dest: '.tmp/styles/',
         src: '{,*/}*.css'
       }

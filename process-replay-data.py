@@ -1,8 +1,24 @@
-t = open('app/data/EuroScope20140425.txt').read()
+import sys
+
+
+class pilot(object):
+
+	def __init__(self, callsign):
+		self.name = callsign
+		self.sq = ''
+		self.lat = []
+		self.lon = []
+		self.alt = []
+		self.hdg = []
+
 
 pilots = []
 
 def addpos(line):
+
+	global pilots
+	global t
+
 	inPilots = False
 
 	# 0 - #@<transponder flag> N
@@ -47,14 +63,36 @@ def addpos(line):
 				p.alt.append(alt)
 				p.hdg.append(hdg)
 
+replayfiles = [
+'app/data/EuroScope20140321.txt',
+'app/data/EuroScope20140328.txt',
+'app/data/EuroScope20140404.txt',
+'app/data/EuroScope20140411.txt',
+'app/data/EuroScope20140418.txt',
+'app/data/EuroScope20140425.txt',
+'app/data/EuroScope20140503.txt',
+'app/data/EuroScope20140509.txt',
+'app/data/EuroScope20140516.txt',
+'app/data/EuroScope20140524.txt',
+'app/data/EuroScope20140530.txt',
+'app/data/EuroScope20140606.txt',
+'app/data/EuroScope20140613.txt',
+'app/data/EuroScope20140620.txt',
+'app/data/EuroScope20140627.txt',
+'app/data/EuroScope20140704.txt',
+'app/data/EuroScope20140711.txt',
+]
+for fff in replayfiles:
+	pilots = []
+	t = open(fff).read()
+	for f in iter(t.splitlines()):
+		if f[0:2] == '@N':
+			line = f.split(':')
+			addpos(line)
 
+	print '{\n\tname: ' + '"' + fff + '", '
+	print '\tpositions: ['
+	for p in pilots:
+		print('\t\t{ name: "' + p.name +'", lat: ['+','.join(p.lat) + '], lon: [' + ','.join(p.lon) + ']},')
 
-
-for f in iter(t.splitlines()):
-	if f[0:2] == '@N':
-		line = f.split(':')
-		addpos(line)
-
-print("---------------")
-for p in pilots:
-	print(p.name, p.lat, p.lon)
+	print '\t]\n},'

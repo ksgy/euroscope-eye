@@ -1,12 +1,17 @@
-<h1>EuroScope Eye</h1>
+<div class="controls">
+	<h1>EuroScope Eye</h1>
 
-<h2>Pilots</h2>
-<ul>
-	<li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" >
-		{{ p.name }}
-	</li>
-</ul>
+	<select name="" id="" ng-options="replay.positions as replay.name for replay in replays" ng-model="positions"></select>
 
+	<h2>Pilots</h2>
+
+	<ul>
+		<li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" >
+			{{ p.name }}
+		</li>
+	</ul>
+
+</div>
 
 <google-map center="map.center" zoom="map.zoom" draggable="true">
 	<polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></polyline>
