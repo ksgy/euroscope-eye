@@ -64,24 +64,25 @@ def addpos(line):
 				p.hdg.append(hdg)
 
 replayfiles = [
-'app/data/EuroScope20140321.txt',
-'app/data/EuroScope20140328.txt',
-'app/data/EuroScope20140404.txt',
-'app/data/EuroScope20140411.txt',
-'app/data/EuroScope20140418.txt',
-'app/data/EuroScope20140425.txt',
-'app/data/EuroScope20140503.txt',
-'app/data/EuroScope20140509.txt',
-'app/data/EuroScope20140516.txt',
-'app/data/EuroScope20140524.txt',
-'app/data/EuroScope20140530.txt',
-'app/data/EuroScope20140606.txt',
-'app/data/EuroScope20140613.txt',
-'app/data/EuroScope20140620.txt',
-'app/data/EuroScope20140627.txt',
-'app/data/EuroScope20140704.txt',
-'app/data/EuroScope20140711.txt',
+	'app/data/EuroScope20140321.txt',
+	'app/data/EuroScope20140328.txt',
+	'app/data/EuroScope20140404.txt',
+	'app/data/EuroScope20140411.txt',
+	'app/data/EuroScope20140418.txt',
+	'app/data/EuroScope20140425.txt',
+	'app/data/EuroScope20140503.txt',
+	'app/data/EuroScope20140509.txt',
+	'app/data/EuroScope20140516.txt',
+	'app/data/EuroScope20140524.txt',
+	'app/data/EuroScope20140530.txt',
+	'app/data/EuroScope20140606.txt',
+	'app/data/EuroScope20140613.txt',
+	'app/data/EuroScope20140620.txt',
+	'app/data/EuroScope20140627.txt',
+	'app/data/EuroScope20140704.txt',
+	'app/data/EuroScope20140711.txt',
 ]
+print '{ "data": ['
 for fff in replayfiles:
 	pilots = []
 	t = open(fff).read()
@@ -90,9 +91,11 @@ for fff in replayfiles:
 			line = f.split(':')
 			addpos(line)
 
-	print '{\n\tname: ' + '"' + fff + '", '
-	print '\tpositions: ['
+	print '{\n\t"name": ' + '"' + fff + '", '
+	print '\t"positions": ['
 	for p in pilots:
-		print('\t\t{ name: "' + p.name +'", lat: ['+','.join(p.lat) + '], lon: [' + ','.join(p.lon) + ']},')
+		print('\t\t{ "name": "' + p.name +'", "lat": ['+','.join('"'+str(la)+'"' for la in p.lat) + '], "lon": [' + ','.join('"'+str(lo)+'"' for lo in p.lon) + '], "alt": [' + ','.join('"'+str(a)+'"' for a in p.alt) + '], "hdg": [' + ','.join('"'+str(h)+'"' for h in p.hdg) + ']},')
 
 	print '\t]\n},'
+
+print ']}'

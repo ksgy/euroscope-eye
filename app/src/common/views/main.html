@@ -17,3 +17,10 @@
 	<polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></polyline>
 </google-map>
 
+<div class="altitude">
+	<div ng-repeat="p in positions|limitTo:1" quick-repeat-list="items">
+		<div quick-ng-repeat="a in p.alt|limitTo:5 track by $index" quick-repeat-list="items">{{a}}</div>
+		<!-- ng-style="{'width':'1px', 'height': a/200+'px', 'float': 'left', 'background-color': 'red'}" -->
+	</div>
+</div>
+

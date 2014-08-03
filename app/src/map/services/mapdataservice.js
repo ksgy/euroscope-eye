@@ -11,7 +11,7 @@ angular.module('euroscopeEyeApp')
 
 		MapMapdataservice.get = function() {
 			// $http returns a promise, which has a then function, which also returns a promise
-			var promise = $http.get('data/EuroScope20140425.txt').then(function (response) {
+			var promise = $http.get('replays.json').then(function (response) {
 				return response.data;
 			});
 			// Return the promise to the controller
