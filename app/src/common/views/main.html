@@ -6,7 +6,7 @@
   <h2>Pilots</h2>
 
   <ul>
-    <li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" >
+    <li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" ng-click="setCurrentPilotData($index)">
       {{ p.name }}
     </li>
   </ul>
@@ -18,7 +18,8 @@
 </google-map>
 
 <div class="altitude">
-    <linechart data="lineChartData" options="linechartOptions" mode=""></linechart>
+
+    <linechart  data="currentPilotAlt" options="linechartOptions" mode=""></linechart>
 
   </div>
 </div>
