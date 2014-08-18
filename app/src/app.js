@@ -5,7 +5,8 @@ angular.module('euroscopeEyeApp', [
   'ngResource',
   'ngSanitize',
   'ngRoute',
-  'google-maps'
+  'google-maps',
+  'n3-line-chart'
 ])
   .config(function ($routeProvider) {
     $routeProvider

@@ -1,26 +1,25 @@
 <div class="controls">
-	<h1>EuroScope Eye</h1>
+  <h1>EuroScope Eye</h1>
 
-	<select name="" id="" ng-options="replay.positions as replay.name for replay in replays" ng-model="positions"></select>
+  <select name="" id="" ng-options="replay.positions as replay.name for replay in replays" ng-model="positions"></select>
 
-	<h2>Pilots</h2>
+  <h2>Pilots</h2>
 
-	<ul>
-		<li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" >
-			{{ p.name }}
-		</li>
-	</ul>
+  <ul>
+    <li ng-repeat="p in positions" ng-style="{color: '{{ stringToColorCode(p.name) }}' }" ng-mouseover="setHover($index)" ng-mouseleave="setColors()" >
+      {{ p.name }}
+    </li>
+  </ul>
 
 </div>
 
 <google-map center="map.center" zoom="map.zoom" draggable="true">
-	<polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></polyline>
+  <polyline ng-repeat="p in polylines" path="p.path" stroke="p.stroke" visible='p.visible' geodesic='p.geodesic' fit="false" editable="p.editable" draggable="p.draggable" icons='p.icons'></polyline>
 </google-map>
 
 <div class="altitude">
-	<div ng-repeat="p in positions|limitTo:1" quick-repeat-list="items">
-		<div quick-ng-repeat="a in p.alt|limitTo:5 track by $index" quick-repeat-list="items">{{a}}</div>
-		<!-- ng-style="{'width':'1px', 'height': a/200+'px', 'float': 'left', 'background-color': 'red'}" -->
-	</div>
+    <linechart data="lineChartData" options="linechartOptions" mode=""></linechart>
+
+  </div>
 </div>
 
