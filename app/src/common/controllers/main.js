@@ -13,26 +13,40 @@ angular.module('euroscopeEyeApp')
 	}
 
 	$scope.linechartOptions = {
-		stacks: [{axis: "y", series: []}],
-		lineMode: "cardinal",
-		series: [
-		 {
-			 id: "id_2",
-			 y: "y",
-			 label: "Baz",
-			 type: "area",
-			 color: "#00ff00",
-			 axis: "y",
-			 thickness: "1px",
-			 drawDots: true
-		 }
-		],
-		axes: {x: {type: "linear", key: "x"}, y: {type: "linear"}},
-		tension: 0.7,
-		tooltip: {mode: "scrubber"},
-		drawLegend: true,
-		drawDots: true,
-		columnsHGap: 5
+		lineMode: "linear",
+		  series: [
+		    {
+		      y: "alt",
+		      label: "Ping",
+		      color: "#e377c2",
+		      axis: "y",
+		      type: "line",
+		      thickness: "2px",
+		      id: "series_0",
+		      drawDots: true
+		    }
+		  ],
+		  stacks: [],
+		  axes: {
+		    x: {type: "linear", key: "x"},
+		    y: {type: "linear"},
+		    y2: {type: "linear"}
+		  },
+		  tension: 0.7,
+		  tooltip: {
+		  	mode: 'scrubber',
+		  	formatter: function(x, y, series) {
+		  		if(y > 100) {
+		  			return 'FL' + parseInt(y);
+		  		} else {
+		  			return 'Altitude: ' + parseInt(y*100) + 'ft';
+		  		}
+		  	}
+			},
+		  tooltipMode: "dots",
+		  drawLegend: false,
+		  drawDots: false,
+		  columnsHGap: 5
 	 };
 
 
@@ -52,7 +66,7 @@ angular.module('euroscopeEyeApp')
 			$scope.currentPilotAlt.push(
 				{
 					'x': i,
-					'y': $scope.positions[idx].alt[i]/100
+					'alt': $scope.positions[idx].alt[i]/100
 				}
 			);
 
