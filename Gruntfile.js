@@ -254,10 +254,10 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             '*.html',
-            'app/src/**/views/{,*/}*.html',
-            'app/vendor/bower_components/**/*',
-            'app/src/**/assets/images/{,*/}*.{webp}',
-            'app/src/**/assets/fonts/*'
+            'src/**/views/{,*/}*.html',
+            'vendor/bower_components/**/*',
+            'src/**/assets/images/{,*/}*.{webp}',
+            'src/**/assets/fonts/*'
           ]
         }, {
           expand: true,
