@@ -14,10 +14,10 @@ angular.module('euroscopeEyeApp', [
 				templateUrl: 'src/common/views/main.html',
 				controller: 'MainCtrl'
 			})
-			.when('/admin', {
-				templateUrl: 'src/admin/views/admin.html',
-				controller: 'AdminAdminCtrl'
-			})
+			// .when('/admin', {
+			// 	templateUrl: 'src/admin/views/admin.html',
+			// 	controller: 'AdminAdminCtrl'
+			// })
 			.otherwise({
 				redirectTo: '/'
 			});
